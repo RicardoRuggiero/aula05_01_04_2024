@@ -1,0 +1,86 @@
+//CARRO
+from Veiculo import Veiculo
+
+class Carro(Veiculo):
+    def __init__(self, marca, ano, cat, qtdPortas):
+        super().__init__(marca, ano, cat)
+        self.qtdPortas = qtdPortas
+    
+    def __str__(self):
+        texto = super().__str__()
+        texto += "Portas: " + str( self.qtdPortas )
+        return texto
+        #return super().__str__() + "Portas: " + str (self.qtdPortas)
+    
+    def imprimir(self):
+        super().imprimir()
+        print ("Portas: " + str ( self.qtdPortas ) )
+-----------------------------------------------------------------------
+//CATEGORIA
+
+class Categoria:
+
+    def __init__(self, nome):
+        self.id = None
+        self.nome = nome
+------------------------------------------------------------
+//MAIN
+
+from Categoria import Categoria
+from Veiculo import Veiculo
+from Carro import Carro
+from Moto import Moto
+
+cat1 = Categoria("SUV")
+cat2 = Categoria("Estradeiras")
+cat3 = Categoria("Sedan")
+
+v1 = Veiculo()
+v1.imprimir()
+print("--------------")
+c1 = Carro("Jeep", 2021, cat1, 4)
+c1.imprimir()
+print("--------------")
+m1 = Moto("BMW", 2020, cat2, 500)
+m1.imprimir()
+print("--------------")
+----------------------------------------------------
+
+//MOTO
+
+from Veiculo import Veiculo
+
+class Moto(Veiculo):
+    def __init__(self, marca, ano, cat, cilindradas):
+        super().__init__(marca, ano, cat)
+        self.cilindradas = cilindradas
+    
+    def __str__(self):
+        return super().__str__() + "Cilindradas: " + str (self.cilindradas)
+    
+    def imprimir(self):
+        print ("Moto: \n", self )
+
+-------------------------------------------------
+//VEICULO
+
+from Categoria import Categoria
+
+class Veiculo:
+    def __init__(self, marca = "Honda", ano = 2014, cat = Categoria (None) ):
+        self.id = None
+        self.marca = marca
+        self.ano = ano
+        self.categoria = cat
+
+    def __str__(self):
+        texto = "Marca: " + self.marca + "\n"
+        texto += "Ano: " + str( self.ano ) + "\n"
+        texto += "Categoria: " + str( self.categoria.nome) + "\n"
+        return texto
+
+    def imprimir(self):
+        print("Veículo: \n", self)
+        #print ( "Veículo: \n", self.__str__() )
+        #print ( "Veículo: \n",  str( self ) )
+
